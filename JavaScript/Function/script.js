@@ -1,37 +1,56 @@
-// function concat(separator) {
-//   let result = "";
-//   for (let i = 1; i < arguments.length; i++) {
-//     result += arguments[i] + separator;
-//   }
-//   return result;
-// }
+// Your Challenge: Complete this CustomerProfileManager
+function CustomerProfileManager() {
+  // TODO: Declare appropriate variables here
+  // // Hint: Think about what should be const vs let
+  // // Customer identification (never changes)
+  // // TODO: customerId, registrationDate
+  const customerId = null;
+  const registrationDate = null;
+  // // Customer details (can change)
+  // // TODO: name, email, phone, status, subscriptionLevel
+  let name = null;
+  let email = null;
+  let phone = null;
+  let status = "active";
+  let subscriptionLevel = null;
+  // // Metrics (change over time)
+  // // TODO: totalOrders, lastOrderDate
+  let totalOrders = null;
+  let lastOrderDate = null;
+  // // Methods to implement:
+  function updatePersonalInfo(newName, newEmail, newPhone) {
+    // TODO: Update the changeable personal information
+    // // Remember: some values can change, others cannot!
+    name = newName;
+    email = newEmail;
+    phone = newPhone;
 
-// console.log(concat(", ", "red", "orange", "blue"));
-// // "red, orange, blue, "
-
-// console.log(concat("; ", "elephant", "giraffe", "lion", "cheetah"));
-// // "elephant; giraffe; lion; cheetah; "
-
-// console.log(concat(". ", "sage", "basil", "oregano", "pepper", "parsley"));
-// // "sage. basil. oregano. pepper. parsley. "
-
-// function newConcat(separator, ...args) {
-//   result = "";
-//   return args.concat().toString();
-// }
-
-// console.log(newConcat(", ", "red", "orange", "blue"));
-
-function solution(str, ending) {
-  const secondStrLeng = ending.length;
-  console.log(secondStrLeng);
-  const firstStrCut = str.slice(-secondStrLeng);
-  console.log(firstStrCut);
-  if (firstStrCut === ending) {
-    return true;
-  } else {
-    return false;
+    return name, email, phone;
   }
+  function changeSubscription(newLevel) {
+    // TODO: Update subscription level
+    //  Add validation in this scope
+    if (status === "active") {
+      subscriptionLevel = newLevel;
+    } else {
+      return;
+    }
+  }
+  function addOrder() {
+    // TODO: Increment total orders
+    // // Update last order date
+    // // Use proper variable scoping
+  }
+  function getCustomerSummary() {
+    // TODO: Return customer information
+    // // Make sure all variables are accessible here
+  }
+  // Return public methods
+  return {
+    updatePersonalInfo,
+    changeSubscription,
+    addOrder,
+    getCustomerSummary,
+  };
 }
-
-solution("abc", "bc");
+// // Test your implementation: const customer = CustomerProfileManager();
