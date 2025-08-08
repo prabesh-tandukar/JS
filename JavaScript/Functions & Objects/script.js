@@ -189,3 +189,87 @@ function createOrder(customerId, ...items) {
   };
   return order;
 }
+
+//Log customer activites
+function logActivity(customerId, action, ...details) {
+  const logEntry = {
+    customerId,
+    action,
+    details: details.join(""),
+    timestamp: new Date(),
+  };
+  console.log("Activity logged:", logEntry);
+}
+
+logActivity("CUST_001", "purchase", "Product A", "Quantity: 2", "Total: $99");
+
+// Destructing parameters
+
+// Object destructuring:  in parameters
+function updateCustomer({ id, name, email, phone, ...otherData }) {
+  console.log(`Updating customer ${id}`);
+  console.log(`Name: ${name}, Email: ${email}, Phone: ${[phone]}`);
+}
+
+//Usage
+updateCustomer({
+  id: "CUST_001",
+  name: "John Doe",
+  email: "john@email.com",
+  phone: "555-1234",
+  address: "123 Main St",
+  city: "New York",
+});
+
+//Array destructuring in parameters
+function processOrder([orderId, customerId, total]) {
+  console.log(
+    `Processing order ${orderId} for customer ${customerId}, total: ${total}`
+  );
+}
+
+processOrder(["ORD_001", "CUST_001", 99.99]);
+
+//Complex destructring example
+function createInvoice({
+  customer: { name, email, address },
+  order: { id, items, total },
+  options = { sendEmail: true, format: "PDF" },
+}) {
+  const invoice = {
+    customerName: name,
+    customerEmail: email,
+    customerAddress: address,
+    orderId: id,
+    items: items,
+    total: total,
+    format: options.format,
+    createdAt: new Date(),
+  };
+
+  if (options.sendEmail) {
+    sendInvoiceEail(email, invoice);
+  }
+
+  return invoice;
+}
+
+//Function scope and Lexical Scoping
+
+//Function Scope
+
+function outerFunction() {
+  const outerVariable = "I'm in outer scope";
+
+  function innerFunction() {
+    const innerVariable = "I'm in inner scope";
+    console.log(outerVariable); //Can access outer scope
+    console.log(innerVariable); //Can access own scope
+  }
+
+  innerFunction();
+  //console.log(innerVariable); //Error! Cannot access inner scope
+}
+
+//CRM Example
+function create
